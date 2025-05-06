@@ -1,6 +1,6 @@
-# Muffin Magic Angular
+# Foofio Angular
 
-This is an Angular 19 version of the Muffin Magic Cart e-commerce application.
+This is an Angular 19 version of theFoofio Cart e-commerce application.
 
 ## Project Overview
 
@@ -28,7 +28,7 @@ The project follows a well-organized structure:
 
 ### 1. Product Catalog
 - Display of products with images, descriptions, and prices
-- Product categorization (cakes, muffins, pastries, cupcakes, cookies, breads)
+- Product categorization 
 - Featured products section
 - Product detail pages with nutritional information and ingredients
 
