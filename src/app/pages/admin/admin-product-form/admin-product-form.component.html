@@ -1,0 +1,84 @@
+<div class="admin-product-form">
+  <h1>{{ isEditMode ? 'Edit Product' : 'Add New Product' }}</h1>
+  
+  <!-- Admin authentication section -->
+  <div *ngIf="!isAuthenticated" class="auth-warning bg-highlight text-light p-4 mb-4 rounded-lg">
+    <h3 class="font-bold mb-2">Authentication Required</h3>
+    <p class="mb-2">You need to be logged in as an admin to add or edit products.</p>
+    <button (click)="loginAsAdmin()" class="btn-vibrant px-4 py-2 rounded-md">
+      Login as Admin
+    </button>
+  </div>
+  
+  <div class="admin-section">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Product Name</label>
+        <input type="text" id="name" formControlName="name" class="form-control">
+        <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="error-message">
+          Product name is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description" rows="5" class="form-control"></textarea>
+        <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched" class="error-message">
+          Description is required
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" id="price" formControlName="price" step="0.01" class="form-control">
+          <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" class="error-message">
+            Valid price is required
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="stock">Stock</label>
+          <input type="number" id="stock" formControlName="stock" class="form-control">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" formControlName="category" class="form-control">
+          <option value="featured">Featured</option>
+          <option value="burger">Burger</option>
+          <option value="pizza">Pizza</option>
+          <option value="drinks">Drinks</option>
+          <option value="paneer">Paneer</option>
+          <option value="roti-parantha">Roti and Parantha</option>
+          <option value="chicken">Chicken</option>
+          <option value="rice">Rice</option>
+        </select>
+        <small class="form-text text-muted">Select a category for this product</small>
+      </div>
+      
+      <div class="form-group">
+        <label for="image">Image URL</label>
+        <input type="text" id="image" formControlName="image" class="form-control">
+        <div *ngIf="productForm.get('image')?.invalid && productForm.get('image')?.touched" class="error-message">
+          Image URL is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="featured">
+          Featured Product
+        </label>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" [routerLink]="['/admin/products']" class="btn secondary">Cancel</button>
+        <button type="submit" [disabled]="productForm.invalid || isSubmitting" class="btn primary">
+          {{ isSubmitting ? 'Saving...' : (isEditMode ? 'Update Product' : 'Create Product') }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - Foodio | Restro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"> <img src="images/logo-2.png" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div> 
+    </div>
+<!---contact us----->
+  
+<div class="offer">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-2">
+                <img src="images/call.png" class="offer-img">
+            </div>
+            <div class="col2">
+                <p>Contact Us</p>
+                <h1>Foodio</h1>
+                <small>Get in touch with our team <br> click on the button below and fill your query and our team will contact you soon <br> <h3>thank you!</h3></small>
+                <br>
+               <div id="formkeep-embed" data-formkeep-url="https://formkeep.com/p/1259fcceaf1bb5bdb8eff6d0c668d79c"></div>
+
+<script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+<script type="text/javascript" src="https://cdn.formkeep.com/formkeep-embed.js"></script>
+
+<!-- Get notified when the form is submitted, add your own code below: -->
+<script>
+const formkeepEmbed = document.querySelector('#formkeep-embed')
+
+formkeepEmbed.addEventListener('formkeep-embed:submitting', _event => {
+  console.log('Submitting form...')
+})
+
+formkeepEmbed.addEventListener('formkeep-embed:submitted', _event => {
+  console.log('Submitted form...')
+})
+</script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------- footer---------->
+
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download Our App</h3>
+                <p>Download App for Android and ios mobile phone</p>
+                <div class="app-logo">
+                    <img src="images/play-store.png">
+                    <img src="images/app-store.png">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="images/logo-1.png" >
+                <p>One Cannot Think Well, Love Well, <br> Sleep Well, If One Has Not Dined Well</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li>Coupons</li>
+                    <li>Blog Post</li>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>-
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow Us</h3>
+                <ul>
+                    <a  href=" https://www.instagram.com/the.skyevents?igsh=MTUybzFpa2xiYmhpeQ==" target="_blank"><li>Facebook</li></a>
+                    <a href="https://www.instagram.com/the.skyevents?igsh=MTUybzFpa2xiYmhpeQ==" target="_blank"><li>Twitter</li></a>
+                    <a href="https://www.instagram.com/the.skyevents?igsh=MTUybzFpa2xiYmhpeQ==" target="_blank"><li>Instagram</li></a>
+                    <a href="https://www.instagram.com/the.skyevents?igsh=MTUybzFpa2xiYmhpeQ==" target="_blank"><li>Youtube</li></a>-
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="Copyright">Copyright 2025-  Atharva , Sarthak & Samarth </p>
+    </div>
+</div>
+<!------ js for toggle menu-------->
+<script>
+    var MenuItems= document.getElementById("MenuItems");
+
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle(){
+        if(MenuItems.style.maxHeight == "0px")
+            {
+                MenuItems.style.maxHeight = "200px";  
+            }
+        else
+            {
+                MenuItems.style.maxHeight = "0px";
+
+            }
+    }
+</script>
+
+
+    <!---js for toggle form-->
+
+    <script>
+
+        var LoginForm = document.getElementById("LoginForm");
+        var RegForm = document.getElementById("RegForm");
+        var Indicator = document.getElementById("Indicator");
+
+            function register(){
+
+                RegForm.style.transform = "translateX(0px)";
+                LoginForm.style.transform = "translateX(0px)";
+                Indicator.style.transform = "translateX(100px)";
+            }
+            
+            function login(){
+
+                RegForm.style.transform = "translateX(300px)";
+                LoginForm.style.transform = "translateX(300px)";
+                Indicator.style.transform = "translateX(0px)";
+             }
+            
+            
+    </script>
+
+</body>
+</html>

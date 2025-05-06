@@ -1,0 +1,116 @@
+<!-- Header -->
+<header class="bg-primary shadow-md fixed w-full z-50">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center py-4">
+      <!-- Logo -->
+      <a [routerLink]="['/']" class="text-3xl font-bold text-white font-lobster tracking-wider">
+        FOOFIO
+      </a>
+      
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a [routerLink]="['/']" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact: true}" class="text-white hover:text-accent transition-colors text-lg font-medium">Home</a>
+        <a [routerLink]="['/catalog']" routerLinkActive="text-accent" class="text-white hover:text-accent transition-colors text-lg font-medium">Menu</a>
+        <a [routerLink]="['/about']" routerLinkActive="text-accent" class="text-white hover:text-accent transition-colors text-lg font-medium">About</a>
+        <a [routerLink]="['/contact']" routerLinkActive="text-accent" class="text-white hover:text-accent transition-colors text-lg font-medium">Contact</a>
+      </nav>
+      
+      <!-- Right Icons -->
+      <div class="flex items-center space-x-6">
+        <a [routerLink]="['/search']" class="text-white hover:text-accent">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </a>
+        <a [routerLink]="['/cart']" class="text-white hover:text-accent relative">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span *ngIf="cartItemCount > 0" class="absolute -top-2 -right-2 bg-accent text-xs bg-dark rounded-full h-5 w-5 flex items-center justify-center font-bold">{{ cartItemCount }}</span>
+        </a>
+        
+        <!-- User Menu -->
+        <div class="relative group">
+          <a *ngIf="!isAuthenticated" [routerLink]="['/login']" class="text-white hover:text-accent">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </a>
+          
+          <button *ngIf="isAuthenticated" class="flex items-center gap-2 text-white hover:text-accent focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <span class="hidden sm:inline-block">{{ currentUser?.name }}</span>
+          </button>
+          
+          <!-- Dropdown Menu -->
+          <div *ngIf="isAuthenticated" class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+            <div class="px-4 py-2 text-sm font-medium border-b text-gray-800">{{ currentUser?.name }}</div>
+            <a [routerLink]="['/profile']" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">Profile</a>
+            <a [routerLink]="['/orders']" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">Orders</a>
+            <div class="border-t"></div>
+            <button (click)="logout()" class="flex items-center w-full text-left px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              Logout
+            </button>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-white focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="pt-20 min-h-screen bg-light">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Restaurant Info -->
+      <div>
+        <h3 class="text-2xl font-lobster mb-4 text-accent">FOOFIO</h3>
+        <p class="mb-2">123 Delicious Street</p>
+        <p class="mb-2">Foodtown, FD 12345</p>
+        <p class="mb-2">Phone: (123) 456-7890</p>
+        <p class="mb-2">Email: info&#64;foofio.com</p>
+      </div>
+      
+      <!-- Opening Hours -->
+      <div>
+        <h3 class="text-lg font-bold mb-4 text-secondary">Opening Hours</h3>
+        <p class="mb-2">Monday - Friday: 11:00 AM - 10:00 PM</p>
+        <p class="mb-2">Saturday - Sunday: 10:00 AM - 11:00 PM</p>
+      </div>
+      
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-bold mb-4 text-secondary">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a [routerLink]="['/']" class="hover:text-accent transition-colors">Home</a></li>
+          <li><a [routerLink]="['/catalog']" class="hover:text-accent transition-colors">Menu</a></li>
+          <li><a [routerLink]="['/about']" class="hover:text-accent transition-colors">About Us</a></li>
+          <li><a [routerLink]="['/contact']" class="hover:text-accent transition-colors">Contact</a></li>
+          <li><a [routerLink]="['/faq']" class="hover:text-accent transition-colors">FAQ</a></li>
+          <li><a [routerLink]="['/terms']" class="hover:text-accent transition-colors">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+      <p>&copy; 2023 FOOFIO Restaurant. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
