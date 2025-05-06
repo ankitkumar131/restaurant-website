@@ -96,6 +96,13 @@ For testing purposes, you can use the following credentials:
 - Email: john@example.com
 - Password: password123
 
+- Email: admin@foofio.com
+- Password: admin123
+
+- admin@cakewebsite.com
+- admin1234
+
+  
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
