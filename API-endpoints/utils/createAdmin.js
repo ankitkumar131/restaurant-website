@@ -4,7 +4,7 @@ const User = require('../models/user.model');
 const createInitialAdmin = async () => {
   try {
     // Check if admin already exists
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@cakewebsite.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@foodio.com';
     const existingAdmin = await User.findOne({ email: adminEmail });
 
     if (!existingAdmin) {

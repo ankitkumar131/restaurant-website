@@ -93,14 +93,12 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Demo Credentials
 
 For testing purposes, you can use the following credentials:
-- Email: john@example.com
-- Password: password123
 
-- Email: admin@foofio.com
-- Password: admin123
 
-- admin@cakewebsite.com
-- admin1234
+- Email: admin@foodio.com
+- Password: admin1234
+
+
 
   
 ## Additional Resources
